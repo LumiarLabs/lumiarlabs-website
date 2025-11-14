@@ -6,24 +6,11 @@ import { ProductSection } from "@/components/landing/product-section";
 import { TeamSection } from "@/components/landing/team-section";
 import { ComplianceSection } from "@/components/landing/compliance-section";
 import { VisionMissionSection } from "@/components/landing/vision-mission-section";
-import Waves from "@/components/ui/waves";
+// Waves are mounted inside specific sections (Hero, Contact)
 
 export default function Home() {
   return (
-    <div className="relative isolate flex min-h-dvh flex-col bg-background">
-      <Waves
-        className="pointer-events-none absolute inset-0 -z-10"
-        lineColor="rgba(255,255,255,0.16)"
-        backgroundColor="transparent"
-        waveSpeedX={0.02}
-        waveSpeedY={0.01}
-        waveAmpX={40}
-        waveAmpY={20}
-        friction={0.9}
-        tension={0.01}
-        xGap={12}
-        yGap={36}
-      />
+    <div id="home" className="relative isolate flex min-h-dvh flex-col bg-background">
       <Header />
       <main className="flex-1">
         <HeroSection />

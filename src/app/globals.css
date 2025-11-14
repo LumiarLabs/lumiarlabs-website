@@ -275,6 +275,23 @@ body {
   }
 }
 
+/* Animate the whole mouse housing */
+@keyframes mouse-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
+}
+
+@keyframes mouse-glow {
+  0%, 100% { box-shadow: 0 4px 12px rgba(0,0,0,0.25), 0 0 0 hsl(var(--foreground) / 0.0); opacity: 0.95; }
+  50% { box-shadow: 0 10px 22px rgba(0,0,0,0.35), 0 0 14px hsl(var(--foreground) / 0.25); opacity: 1; }
+}
+
+@keyframes mouse-sheen {
+  0% { transform: translateY(-60%); opacity: 0; }
+  50% { transform: translateY(0%); opacity: 0.35; }
+  100% { transform: translateY(60%); opacity: 0; }
+}
+
 /* Hero CTA glow buttons */
 .btn-glow {
   position: relative;
@@ -406,6 +423,9 @@ body {
   align-items: flex-start;
   justify-content: center;
   padding-top: 4px;
+  position: relative;
+  animation: mouse-bob 1.6s ease-in-out infinite, mouse-glow 1.6s ease-in-out infinite;
+  will-change: transform, box-shadow;
 }
 
 .mouse-wheel {
@@ -414,4 +434,17 @@ body {
   border-radius: 9999px;
   background: hsl(var(--foreground));
   animation: scroll-wheel 1.6s ease-in-out infinite;
+}
+
+.mouse-indicator::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  top: 4px;
+  height: 30%;
+  border-radius: 9999px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.5), rgba(255,255,255,0));
+  animation: mouse-sheen 1.6s ease-in-out infinite;
+  pointer-events: none;
 }

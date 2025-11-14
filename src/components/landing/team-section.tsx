@@ -1,18 +1,23 @@
 import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 type Tile = {
   src: string;
   alt: string;
   ar: string; // aspect ratio class
+  label: string; // overlay name per tile
 };
 
 // A simple bento layout using Picsum placeholders (remote domain allowed in next.config).
 // Define tiles with aspect ratios to create visual rhythm.
 const leftCol: Tile[] = [
   {
-    src: "https://picsum.photos/seed/founder-a/900/1200",
+    src: "/individual-img3.jpg",
     alt: "Founders 3",
     ar: "aspect-[4/5]",
+    label: "Luc Mwizerwa, CPO & Head of Design",
   },
   //   {
   //     src: "https://picsum.photos/seed/founder-d/1000/1000",
@@ -28,14 +33,16 @@ const leftCol: Tile[] = [
 
 const centerCol: Tile[] = [
   {
-    src: "/Sam_Ive.jpg",
+    src: "/group-img3.jpg",
     alt: "Founder portrait",
     ar: "aspect-[16/9]",
+    label: "Meet Us",
   },
   {
-    src: "https://picsum.photos/seed/founder-c/1000/1000",
+    src: "/individual-img1.jpg",
     alt: "Founder 1",
     ar: "aspect-square",
+    label: "Arboy Magomba, CEO & Head of Product/Engineering",
   },
   //   {
   //     src: "https://picsum.photos/seed/founder-e/1000/1000",
@@ -46,9 +53,10 @@ const centerCol: Tile[] = [
 
 const rightCol: Tile[] = [
   {
-    src: "https://picsum.photos/seed/founder-b/900/1200",
+    src: "/individual-img2.jpg",
     alt: "Founder 2",
     ar: "aspect-[4/5]",
+    label: "Messi Banzusabe, CTO & VP of Engineering",
   },
   //   {
   //     src: "https://picsum.photos/seed/founder-f/1000/1000",
@@ -79,7 +87,7 @@ export function TeamSection() {
           {[...centerCol, ...leftCol, ...rightCol].map((t, i) => (
             <div
               key={i}
-              className={`relative ${t.ar} overflow-hidden border border-border/50`}
+              className={`group relative ${t.ar} overflow-hidden border border-border/50`}
             >
               <Image
                 src={t.src}
@@ -88,6 +96,10 @@ export function TeamSection() {
                 className="object-cover transition duration-500 grayscale hover:grayscale-0"
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               />
+              <a href="#" className="glass-btn text-sm font-medium">
+                {t.label}
+                <ArrowUpRight className="h-4 w-4" />
+              </a>
             </div>
           ))}
         </div>
@@ -103,7 +115,7 @@ export function TeamSection() {
               {group.col.map((t, i) => (
                 <div
                   key={i}
-                  className={`relative ${t.ar} overflow-hidden border border-border/50`}
+                  className={`group relative ${t.ar} overflow-hidden border border-border/50`}
                 >
                   <Image
                     src={t.src}
@@ -112,10 +124,113 @@ export function TeamSection() {
                     className="object-cover transition duration-500 grayscale hover:grayscale-0"
                     sizes="(min-width: 1024px) 33vw, 100vw"
                   />
+                  <a href="#" className="glass-btn text-sm font-medium">
+                    {t.label}
+                    <ArrowUpRight className="h-4 w-4" />
+                  </a>
                 </div>
               ))}
             </div>
           ))}
+        </div>
+        {/* CTA row under the bento grid */}
+        {/* <div className="mt-20 flex items-center justify-center gap-6">
+          <Link
+            href="#products"
+            className="text-lg underline underline-offset-4 hover:text-primary"
+          >
+            All Projects
+          </Link>
+          <Button
+            asChild
+            variant="outline"
+            size="lg"
+            className="btn-glow btn-lux rounded-[14px]"
+          >
+            <Link href="#contact">Contact the Team</Link>
+          </Button>
+        </div> */}
+
+        {/* Section divider (not full width) */}
+        <div className="mx-auto my-15 md:my-25 h-px w-full max-w-8xl bg-border/60" />
+
+        {/* Letter from the CEO */}
+        <div className="mt-8 grid items-start gap-8 md:grid-cols-2">
+          <div className="space-y-6 max-w-2xl">
+            <h3 className="text-4xl md:text-6xl font-headline">
+              Letter to All of You
+            </h3>
+            <div className="space-y-3">
+              <div className="flex items-center gap-2 text-muted-foreground/60">
+                <span aria-hidden className="text-2xl leading-none">
+                  “
+                </span>
+                <span className="text-xs uppercase tracking-wide">
+                  A note from Arboy Magomba
+                </span>
+              </div>
+              <p className="border-l border-border/60 pl-6 italic text-foreground/90 md:text-lg leading-relaxed">
+                I fell in love with technology through video games. At six, a
+                controller and a blinking cursor felt like a portal; modding
+                levels and tweaking settings taught me how systems work. That
+                spark, turning play into possibility, pulled me into code,
+                product design, and building tools that scream fun, elegance,
+                and impact.
+                <br />
+                <br />
+                At Lumiar Labs, that same curiosity drives our mission: making
+                software fun and impactful. We’re building rails for verifiable,
+                human‑centered products that feel effortless yet secure,
+                private, and beautifully simple. Thank you for being part of
+                this journey; your feedback, partnership, and belief shape what
+                we release next.
+                <br />
+                <br />
+                “The people who are crazy enough to think they can change the
+                world are the ones who do.”
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {[
+                "Integrity",
+                "Security",
+                "Design",
+                "Openness",
+                "Reliability",
+                "Speed",
+              ].map((tag) => (
+                <span
+                  key={tag}
+                  className="rounded-full border border-border/60 bg-secondary/30 px-3 py-1 text-sm text-foreground"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+            <div className="mt-4 grid grid-cols-3 gap-6 text-sm md:text-base">
+              <div>
+                <div className="text-muted-foreground">Role</div>
+                <div className="text-foreground">Chief Executive Officer</div>
+              </div>
+              <div>
+                <div className="text-muted-foreground">Company</div>
+                <div className="text-foreground">Lumiar Labs</div>
+              </div>
+              <div>
+                <div className="text-muted-foreground">Since</div>
+                <div className="text-foreground">2025</div>
+              </div>
+            </div>
+          </div>
+          <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-border/50 grayscale">
+            <Image
+              src="/group-img1.jpg"
+              alt="CEO portrait"
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+          </div>
         </div>
       </div>
     </section>
