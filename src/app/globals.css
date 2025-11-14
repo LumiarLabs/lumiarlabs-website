@@ -1,4 +1,4 @@
-@import "tailwindcss";
+/* @import "tailwindcss";
 
 :root {
   --background: #ffffff;
@@ -23,4 +23,395 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+} */
+
+@import "tailwindcss";
+
+/* Map CSS variables to Tailwind v4 tokens */
+@theme inline {
+  /* Colors */
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  /* Sidebar tokens */
+  --color-sidebar: hsl(var(--sidebar-background));
+  --color-sidebar-foreground: hsl(var(--sidebar-foreground));
+  --color-sidebar-primary: hsl(var(--sidebar-primary));
+  --color-sidebar-primary-foreground: hsl(var(--sidebar-primary-foreground));
+  --color-sidebar-accent: hsl(var(--sidebar-accent));
+  --color-sidebar-accent-foreground: hsl(var(--sidebar-accent-foreground));
+  --color-sidebar-border: hsl(var(--sidebar-border));
+  --color-sidebar-ring: hsl(var(--sidebar-ring));
+
+  /* Charts */
+  --color-chart-1: hsl(var(--chart-1));
+  --color-chart-2: hsl(var(--chart-2));
+  --color-chart-3: hsl(var(--chart-3));
+  --color-chart-4: hsl(var(--chart-4));
+  --color-chart-5: hsl(var(--chart-5));
+
+  /* Fonts */
+  --font-body: "Satoshi", ui-sans-serif, system-ui, -apple-system, Segoe UI,
+    Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  --font-headline: "Satoshi", ui-sans-serif, system-ui, -apple-system, Segoe UI,
+    Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 0%; /* Black */
+    --foreground: 0 0% 100%; /* White */
+    --card: 0 0% 7.1%; /* #121212 */
+    --card-foreground: 0 0% 82.7%; /* #D3D3D3 */
+    --popover: 0 0% 7.1%;
+    --popover-foreground: 0 0% 82.7%;
+    --primary: 0 0% 100%; /* White */
+    --primary-foreground: 0 0% 0%; /* Black */
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+    --radius: 0.5rem;
+
+    /* Sidebar (default) */
+    --sidebar-background: 0 0% 7.1%;
+    --sidebar-foreground: 0 0% 82.7%;
+    --sidebar-primary: 0 0% 100%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 0 0% 14.9%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 0 0% 20%;
+    --sidebar-ring: 0 0% 83.1%;
+  }
+  .dark {
+    --background: 0 0% 0%; /* Black */
+    --foreground: 0 0% 100%; /* White */
+    --card: 0 0% 7.1%; /* #121212 */
+    --card-foreground: 0 0% 82.7%; /* #D3D3D3 */
+    --popover: 0 0% 7.1%;
+    --popover-foreground: 0 0% 82.7%;
+    --primary: 0 0% 100%; /* White */
+    --primary-foreground: 0 0% 0%; /* Black */
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+    --radius: 0.5rem;
+
+    /* Sidebar (dark) */
+    --sidebar-background: 0 0% 7.1%;
+    --sidebar-foreground: 0 0% 82.7%;
+    --sidebar-primary: 0 0% 100%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 0 0% 14.9%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 0 0% 20%;
+    --sidebar-ring: 0 0% 83.1%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Background smoke animation removed */
+
+@keyframes scroll-loop {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* Move by half the track width when the content is duplicated
+       so the second half perfectly continues the first half. */
+    transform: translateX(-50%);
+  }
+}
+
+.scroll-loop {
+  display: flex;
+  width: max-content;
+  animation: scroll-loop 28s linear infinite;
+}
+
+/* Soft fade at the marquee edges */
+.marquee-mask {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 1) 10%,
+    rgba(0, 0, 0, 1) 90%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 1) 10%,
+    rgba(0, 0, 0, 1) 90%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+/* Stacked card section styling */
+.section-card {
+  position: relative;
+  /* Rounded only on the top so it visually disappears into the next card */
+  border-top-left-radius: 4rem;
+  border-top-right-radius: 4rem;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  /* Keep only the top hairline; draw sides with fading pseudo-elements */
+  border-top: 1px solid hsl(var(--border) / 0.5);
+  border-left: none;
+  border-right: none;
+  border-bottom: none; /* leave the bottom open so next card feels on top */
+  background: linear-gradient(
+      180deg,
+      hsl(var(--background) / 0.6) 0%,
+      hsl(var(--background) / 0.85) 100%
+    ),
+    hsl(var(--background));
+  /* Remove outer glow; keep only a subtle inner hairline */
+  box-shadow: inset 0 1px 0 hsl(var(--foreground) / 0.06);
+}
+
+.section-curve {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  top: -18px;
+  height: 36px;
+  border-top: 1px solid hsl(var(--border) / 0.6);
+  border-radius: 9999px / 36px;
+  /* Remove top glow */
+  box-shadow: none;
+  pointer-events: none;
+}
+
+/* Fading left/right borders: solid near the top, fade to transparent by bottom */
+.section-card::before,
+.section-card::after {
+  content: "";
+  position: absolute;
+  top: 10px; /* sit below the rounded corner */
+  bottom: 0;
+  width: 1px;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    hsl(var(--border) / 0.55) 0%,
+    hsl(var(--border) / 0.55) 45%,
+    hsl(var(--border) / 0) 100%
+  );
+}
+.section-card::before { left: 0; }
+.section-card::after { right: 0; }
+
+.section-card-bleed {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+/* Scroll mouse indicator */
+@keyframes scroll-wheel {
+  0% {
+    transform: translateY(2px);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(10px);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(2px);
+    opacity: 1;
+  }
+}
+
+/* Hero CTA glow buttons */
+.btn-glow {
+  position: relative;
+  box-shadow:
+    0 0 0 1px hsl(var(--foreground) / 0.35),
+    0 6px 20px hsl(var(--foreground) / 0.18),
+    0 0 40px hsl(var(--foreground) / 0.12);
+}
+
+.btn-glow::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px; /* border thickness */
+  background: conic-gradient(
+    from var(--ring-rotate, 20deg),
+    rgba(255, 255, 255, 0.08) 0deg,
+    rgba(255, 255, 255, 0.7) 35deg,
+    rgba(255, 255, 255, 0.08) 70deg,
+    rgba(255, 255, 255, 0.08) 210deg,
+    rgba(255, 255, 255, 0.7) 235deg,
+    rgba(255, 255, 255, 0.08) 270deg,
+    rgba(255, 255, 255, 0.08) 360deg
+  );
+  -webkit-mask: 
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.btn-glow::before {
+  content: "";
+  position: absolute;
+  inset: -25%;
+  border-radius: inherit;
+  background:
+    radial-gradient(40% 60% at 6% 94%, rgba(255,255,255,0.28), rgba(255,255,255,0) 70%),
+    radial-gradient(40% 60% at 94% 6%, rgba(255,255,255,0.28), rgba(255,255,255,0) 70%);
+  filter: blur(24px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Inner glossy lighting */
+.btn-lux {
+  color: hsl(var(--foreground));
+  background:
+    radial-gradient(120% 160% at 78% 14%, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.08) 20%, rgba(255,255,255,0) 42%),
+    linear-gradient(180deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,1) 100%);
+  box-shadow:
+    inset 0 1px 2px rgba(255,255,255,0.10),
+    inset 0 -2px 4px rgba(0,0,0,0.45);
+}
+
+.btn-lux:hover {
+  background:
+    radial-gradient(120% 160% at 78% 14%, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.10) 22%, rgba(255,255,255,0) 44%),
+    linear-gradient(180deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,1) 100%);
+}
+
+/* Glossy overlay button used on images */
+.glass-btn {
+  position: absolute;
+  left: 0.75rem;
+  /* 12px */
+  right: 0.75rem;
+  bottom: 0.75rem;
+  height: 3rem;
+  /* 48px */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  z-index: 1;
+  color: hsl(var(--foreground));
+  background: linear-gradient(180deg,
+      rgba(255, 255, 255, 0.16) 0%,
+      rgba(255, 255, 255, 0.08) 100%),
+    rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow:
+    inset 0 6px 12px rgba(255, 255, 255, 0.15),
+    0 10px 30px rgba(0, 0, 0, 0.35);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+.glass-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(from 0deg,
+      rgba(255, 255, 255, 0.05) 0deg,
+      rgba(255, 255, 255, 0.85) 35deg,
+      rgba(255, 255, 255, 0.05) 70deg,
+      rgba(255, 255, 255, 0.05) 210deg,
+      rgba(255, 255, 255, 0.85) 235deg,
+      rgba(255, 255, 255, 0.05) 270deg,
+      rgba(255, 255, 255, 0.05) 360deg);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.group:hover .glass-btn {
+  background: linear-gradient(180deg,
+      rgba(255, 255, 255, 0.2) 0%,
+      rgba(255, 255, 255, 0.1) 100%),
+    rgba(255, 255, 255, 0.1);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.6),
+    inset 0 8px 14px rgba(255, 255, 255, 0.18),
+    0 14px 36px rgba(0, 0, 0, 0.45);
+}
+
+.mouse-indicator {
+  width: 24px;
+  height: 38px;
+  border-radius: 9999px;
+  border: 2px solid hsl(var(--foreground));
+  display: inline-flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 4px;
+}
+
+.mouse-wheel {
+  width: 4px;
+  height: 8px;
+  border-radius: 9999px;
+  background: hsl(var(--foreground));
+  animation: scroll-wheel 1.6s ease-in-out infinite;
 }
