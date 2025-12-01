@@ -4,7 +4,8 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, Sparkles } from "lucide-react";
+import { Menu, Sparkles, Zap } from "lucide-react";
+import { ModeToggle } from "@/components/mode-toggle";
 
 const LumiarLabsIcon = () => (
   <svg
@@ -13,8 +14,9 @@ const LumiarLabsIcon = () => (
     viewBox="0 0 28 28"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    className="text-foreground"
   >
-    <path d="M14 0V14H28V0H14ZM0 28H14V14H0V28Z" fill="white" />
+    <path d="M14 0V14H28V0H14ZM0 28H14V14H0V28Z" fill="currentColor" />
   </svg>
 );
 
@@ -31,84 +33,92 @@ export function Header() {
 
   const navLinks = [
     { href: "#home", label: "Home" },
-    { href: "#products", label: "Products" },
+    { href: "#lumipact", label: "LumiPact", badge: true },
     { href: "#team", label: "The Team" },
     { href: "#contact", label: "Contact" },
   ];
 
   return (
     <header
-      className={`sticky top-0 z-50 w-full transition-all duration-300 ${
-        isScrolled ? "bg-background/80 backdrop-blur-sm" : "bg-transparent"
+      className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-5xl rounded-full border border-border/40 transition-all duration-300 ${
+        isScrolled 
+          ? "bg-background/60 backdrop-blur-md shadow-lg supports-[backdrop-filter]:bg-background/60" 
+          : "bg-background/40 backdrop-blur-sm border-transparent supports-[backdrop-filter]:bg-background/40"
       }`}
     >
-      <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
-        <Link href="/" className="flex items-center gap-2" prefetch={false}>
+      <div className="flex h-14 items-center justify-between px-4 md:px-6">
+        {/* Left: Logo */}
+        <Link href="/" className="flex items-center gap-2 shrink-0" prefetch={false}>
           <LumiarLabsIcon />
-          <span className="text-xl font-bold tracking-tight text-foreground">
-            LumiarLabs
+          <span className="text-lg font-bold tracking-tight text-foreground hidden sm:inline-flex items-baseline gap-1.5">
+            LumiPact
+            <span className="text-[10px] font-medium text-muted-foreground/80 tracking-normal">by LumiarLabs</span>
           </span>
         </Link>
-        <div className="hidden md:flex items-center gap-8">
-          <nav className="hidden md:flex items-center gap-6">
+
+        {/* Center: Navigation & Theme Toggle */}
+        <div className="hidden md:flex items-center gap-6 absolute left-1/2 -translate-x-1/2">
+          <nav className="flex items-center gap-6">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+                className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary relative"
                 prefetch={false}
               >
                 {link.label}
+                {link.badge && (
+                  <span className="absolute -top-0.5 -right-1.5 w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+                )}
               </Link>
             ))}
           </nav>
-          <Button asChild variant="outline">
-            <Link href="#compliance" prefetch={false}>
-              <Sparkles className="h-4 w-4 mr-2" />
-              Try LumiarAI
-            </Link>
-          </Button>
+          <div className="w-px h-4 bg-border/50" />
+          <ModeToggle />
         </div>
 
-        <div className="md:hidden">
-          <Sheet>
-            <SheetTrigger asChild>
-              <Button variant="ghost" size="icon">
-                <Menu className="h-6 w-6" />
-                <span className="sr-only">Toggle navigation menu</span>
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="right">
-              <div className="grid gap-4 p-6">
-                <Link
-                  href="/"
-                  className="flex items-center gap-2"
-                  prefetch={false}
-                >
-                  <LumiarLabsIcon />
-                  <span className="text-lg font-bold">LumiarLabs</span>
-                </Link>
-                <nav className="grid gap-2">
-                  {navLinks.map((link) => (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      className="text-base font-medium text-muted-foreground hover:text-primary"
-                      prefetch={false}
-                    >
-                      {link.label}
-                    </Link>
-                  ))}
-                </nav>
-                <Button asChild variant="outline" className="w-full">
-                  <Link href="#compliance" prefetch={false}>
-                    <Sparkles className="h-4 w-4 mr-2" />
-                    Try LumiarAI
-                  </Link>
+        {/* Right: CTA Button & Mobile Menu */}
+        <div className="flex items-center gap-4 shrink-0">
+          <Button asChild variant="default" size="sm" className="hidden md:inline-flex btn-glow btn-lux rounded-full px-6">
+            <Link href="https://lumipact.app" target="_blank" prefetch={false}>
+              Launch LumiPact
+            </Link>
+          </Button>
+
+          <div className="md:hidden">
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon" className="rounded-full">
+                  <Menu className="h-5 w-5" />
+                  <span className="sr-only">Toggle navigation menu</span>
                 </Button>
-              </div>
-            </SheetContent>
-          </Sheet>
+              </SheetTrigger>
+              <SheetContent side="top" className="w-full rounded-b-3xl pt-16 border-b border-border/40 bg-background/95 backdrop-blur-xl">
+                <div className="grid gap-6 p-4">
+                  <nav className="grid gap-4 justify-center text-center">
+                    {navLinks.map((link) => (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        className="text-lg font-medium text-muted-foreground hover:text-primary transition-colors"
+                        prefetch={false}
+                      >
+                        {link.label}
+                      </Link>
+                    ))}
+                  </nav>
+                  <div className="flex flex-col items-center gap-4 mt-4">
+                    <ModeToggle />
+                    <Button asChild variant="default" className="w-full max-w-xs rounded-full btn-glow btn-lux">
+                      <Link href="https://lumipact.app" target="_blank" prefetch={false}>
+                        Launch LumiPact
+                      </Link>
+                    </Button>
+                  </div>
+                </div>
+              </SheetContent>
+            </Sheet>
+          </div>
         </div>
       </div>
     </header>

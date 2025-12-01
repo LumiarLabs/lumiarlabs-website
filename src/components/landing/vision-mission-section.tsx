@@ -1,8 +1,19 @@
+"use client";
+
 import { Eye, Target } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 export function VisionMissionSection() {
+  const { ref, isVisible } = useScrollAnimation(0.15);
+
   return (
-    <section id="vision" className="w-full py-20 md:py-32 bg-card">
+    <section
+      ref={ref as React.RefObject<HTMLElement>}
+      id="vision"
+      className={`w-full py-20 md:py-32 bg-card scroll-animate ${
+        isVisible ? "visible" : ""
+      }`}
+    >
       <div className="container mx-auto grid items-center gap-12 px-4 md:px-6 lg:grid-cols-2 lg:gap-20">
         <div className="flex flex-col justify-center space-y-4 text-center lg:text-left">
           <div className="inline-block rounded-lg bg-secondary px-3 py-1 text-sm text-secondary-foreground self-center lg:self-start">

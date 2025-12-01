@@ -1,7 +1,10 @@
+"use client";
+
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 type Tile = {
   src: string;
@@ -20,14 +23,14 @@ const leftCol: Tile[] = [
     label: "Luc Mwizerwa, CPO & Head of Design",
   },
   //   {
-  //     src: "https://picsum.photos/seed/founder-d/1000/1000",
-  //     alt: "Founder candid D",
-  //     ar: "aspect-square",
+    //     src: "https://picsum.photos/seed/founder-d/1000/1000",
+    //     alt: "Founder candid D",
+    //     ar: "aspect-square",
   //   },
   //   {
-  //     src: "https://picsum.photos/seed/lab/900/1200",
-  //     alt: "In the lab",
-  //     ar: "aspect-[4/5]",
+    //     src: "https://picsum.photos/seed/lab/900/1200",
+    //     alt: "In the lab",
+    //     ar: "aspect-[4/5]",
   //   },
 ];
 
@@ -71,8 +74,16 @@ const rightCol: Tile[] = [
 ];
 
 export function TeamSection() {
+  const { ref, isVisible } = useScrollAnimation(0.15);
+
   return (
-    <section id="team" className="w-full py-20 md:py-32 bg-background">
+    <section
+      ref={ref as React.RefObject<HTMLElement>}
+      id="team"
+      className={`w-full py-20 md:py-32 bg-background scroll-animate ${
+        isVisible ? "visible" : ""
+      }`}
+    >
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center">
           <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline">
@@ -93,7 +104,7 @@ export function TeamSection() {
                 src={t.src}
                 alt={t.alt}
                 fill
-                className="object-cover transition duration-500 grayscale hover:grayscale-0"
+                className="object-cover transition duration-500"
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               />
               <a href="#" className="glass-btn text-sm font-medium">
@@ -121,7 +132,7 @@ export function TeamSection() {
                     src={t.src}
                     alt={t.alt}
                     fill
-                    className="object-cover transition duration-500 grayscale hover:grayscale-0"
+                    className="object-cover transition duration-500"
                     sizes="(min-width: 1024px) 33vw, 100vw"
                   />
                   <a href="#" className="glass-btn text-sm font-medium">
@@ -178,51 +189,15 @@ export function TeamSection() {
                 and impact.
                 <br />
                 <br />
-                At Lumiar Labs, that same curiosity drives our mission: making
-                software fun and impactful. We’re building rails for verifiable,
-                human‑centered products that feel effortless yet secure,
-                private, and beautifully simple. Thank you for being part of
-                this journey; your feedback, partnership, and belief shape what
-                we release next.
+                At Lumiar Labs, that same curiosity drives our mission: to build software that is as enjoyable as it is impactful. We create verifiable, human-centered products that make complex systems feel effortless. Our commitment is to build tools that are secure, private, and beautifully simple, technology that works for you, not the other way around. Thank you for being part of this journey; your feedback, partnership, and belief shape what we release next.
                 <br />
                 <br />
                 “The people who are crazy enough to think they can change the
                 world are the ones who do.”
               </p>
             </div>
-            <div className="flex flex-wrap gap-2">
-              {[
-                "Integrity",
-                "Security",
-                "Design",
-                "Openness",
-                "Reliability",
-                "Speed",
-              ].map((tag) => (
-                <span
-                  key={tag}
-                  className="rounded-full border border-border/60 bg-secondary/30 px-3 py-1 text-sm text-foreground"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-            <div className="mt-4 grid grid-cols-3 gap-6 text-sm md:text-base">
-              <div>
-                <div className="text-muted-foreground">Role</div>
-                <div className="text-foreground">Chief Executive Officer</div>
-              </div>
-              <div>
-                <div className="text-muted-foreground">Company</div>
-                <div className="text-foreground">Lumiar Labs</div>
-              </div>
-              <div>
-                <div className="text-muted-foreground">Since</div>
-                <div className="text-foreground">2025</div>
-              </div>
-            </div>
           </div>
-          <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-border/50 grayscale">
+          <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-border/50">
             <Image
               src="/group-img1.jpg"
               alt="CEO portrait"

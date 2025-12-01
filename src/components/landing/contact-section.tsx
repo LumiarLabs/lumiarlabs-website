@@ -151,6 +151,8 @@
 //   );
 // }
 
+"use client";
+
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -163,17 +165,31 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import Waves from "@/components/ui/waves";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
 export function ContactSection() {
+  const { ref, isVisible } = useScrollAnimation(0.15);
+  const { resolvedTheme } = useTheme();
+  const [lineColor, setLineColor] = useState("rgba(255,255,255,0.16)");
+
+  useEffect(() => {
+    setLineColor(resolvedTheme === "dark" ? "rgba(255,255,255,0.16)" : "rgba(0,0,0,0.1)");
+  }, [resolvedTheme]);
+
   return (
     <section
+      ref={ref as React.RefObject<HTMLElement>}
       id="contact"
-      className="relative isolate w-full min-h-[calc(100dvh-var(--footer-h,96px))] bg-background flex items-center overflow-hidden"
+      className={`relative isolate w-full min-h-[calc(100dvh-var(--footer-h,96px))] bg-background flex items-center overflow-hidden scroll-animate ${
+        isVisible ? "visible" : ""
+      }`}
     >
       {/* Waves behind the content */}
       <Waves
         className="pointer-events-none absolute inset-0 -z-10"
-        lineColor="rgba(255,255,255,0.16)"
+        lineColor={lineColor}
         backgroundColor="transparent"
         waveSpeedX={0.02}
         waveSpeedY={0.01}
@@ -216,16 +232,8 @@ export function ContactSection() {
                     placeholder="your@email.com"
                   />
                 </div>
-                <div className="space-y-2">
-                  <Label htmlFor="message">Message</Label>
-                  <Textarea
-                    id="message"
-                    name="message"
-                    placeholder="Your message..."
-                  />
-                </div>
                 <Button type="submit" className="w-full">
-                  Send Message
+                  Join Waitlist
                 </Button>
               </form>
             </CardContent>

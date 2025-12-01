@@ -3,15 +3,16 @@ import Link from "next/link";
 import { Twitter, Linkedin, Github } from "lucide-react";
 import { useEffect, useRef } from "react";
 
-const PortfoliteIcon = () => (
+const LumiarLabsIcon = () => (
   <svg
     width="24"
     height="24"
     viewBox="0 0 28 28"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    className="text-foreground"
   >
-    <path d="M14 0V14H28V0H14ZM0 28H14V14H0V28Z" fill="white" />
+    <path d="M14 0V14H28V0H14ZM0 28H14V14H0V28Z" fill="currentColor" />
   </svg>
 );
 
@@ -38,7 +39,7 @@ export function Footer() {
       <div className="container mx-auto px-4 md:px-6 py-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-2">
-            <PortfoliteIcon />
+            <LumiarLabsIcon />
             <span className="font-semibold">LumiarLabs</span>
           </div>
           <p className="text-sm text-muted-foreground">
