@@ -85,28 +85,42 @@ export async function joinWaitlist(prevState: any, formData: FormData) {
     `;
     const waitlistPosition = parseInt(countResult.rows[0].count) + 1;
 
-    // Insert new waitlist entry
+    // Insert new waitlist entry (without confirmation_sent flag initially)
     await sql`
       INSERT INTO waitlist (name, email, waitlist_position, confirmation_sent)
-      VALUES (${name}, ${email}, ${waitlistPosition}, true)
+      VALUES (${name}, ${email}, ${waitlistPosition}, false)
     `;
 
     // Send confirmation email
+    let emailSent = false;
     try {
-      await resend.emails.send({
+      const result = await resend.emails.send({
         from: 'LumiarLabs <onboarding@resend.dev>', // Change to your verified domain
         to: email,
         subject: 'Welcome to the LumiPact Beta Waitlist! 🎉',
         react: WaitlistConfirmationEmail({ name, waitlistPosition }),
       });
+
+      console.log('Email sent successfully:', result);
+      emailSent = true;
+
+      // Mark as sent in database
+      await sql`
+        UPDATE waitlist 
+        SET confirmation_sent = true 
+        WHERE email = ${email}
+      `;
     } catch (emailError) {
       console.error('Failed to send confirmation email:', emailError);
-      // Don't fail the entire operation if email fails
+      // Don't fail the entire operation if email fails, but log it
+      console.error('Email error details:', JSON.stringify(emailError, null, 2));
     }
 
     return {
       success: true,
-      message: `Welcome aboard! You're #${waitlistPosition} on the waitlist.`,
+      message: emailSent
+        ? `Welcome aboard! You're #${waitlistPosition} on the waitlist. Check your email!`
+        : `You're #${waitlistPosition} on the waitlist! (Email notification pending)`,
       errors: {},
     };
   } catch (error) {
