@@ -95,7 +95,7 @@ export async function joinWaitlist(prevState: any, formData: FormData) {
     let emailSent = false;
     try {
       const result = await resend.emails.send({
-        from: 'LumiarLabs <onboarding@resend.dev>', // Change to your verified domain
+        from: 'LumiarLabs <noreply@lumiarlabs.com>', // Change to your verified domain
         to: email,
         subject: 'Welcome to the LumiPact Beta Waitlist! 🎉',
         react: WaitlistConfirmationEmail({ name, waitlistPosition }),
