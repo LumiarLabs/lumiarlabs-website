@@ -22,7 +22,10 @@ import {
   Filter,
   Star,
   Clock,
-  Plus
+  Plus,
+  Sparkles,
+  Download,
+  Copy
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -389,3 +392,147 @@ export function TemplatesMockup() {
     </div>
   );
 }
+
+export function StudioMockup() {
+  return (
+    <div className="w-full h-full bg-background rounded-xl overflow-hidden flex">
+      {/* Main Content: Split View */}
+      <div className="flex-1 flex overflow-hidden">
+        {/* Left: Input Form */}
+        <div className="w-1/2 border-r overflow-hidden">
+          <ScrollArea className="h-full">
+            <div className="p-4 space-y-4">
+              <div className="space-y-1.5">
+                <h1 className="text-lg font-bold">Describe your deal</h1>
+                <p className="text-xs text-muted-foreground">
+                  Feed LumiPact a plain-language scenario or pick a template.
+                </p>
+              </div>
+
+              <div className="space-y-3">
+                <div className="space-y-1.5">
+                  <label className="text-xs font-medium">Parties Involved</label>
+                  <div className="h-8 px-3 rounded-md border bg-background flex items-center">
+                    <span className="text-xs text-muted-foreground">John Doe (Client), Jane Smith (Provider)</span>
+                  </div>
+                </div>
+
+                <div className="space-y-1.5">
+                  <label className="text-xs font-medium">Describe Contract</label>
+                  <div className="h-20 px-3 py-2 rounded-md border bg-background">
+                    <p className="text-xs text-muted-foreground leading-relaxed">
+                      Web development services for a landing page with two rounds of revisions, 
+                      delivered by January 15th for $800.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-medium">Payment Terms</label>
+                    <div className="h-16 px-2 py-1.5 rounded-md border bg-background">
+                      <p className="text-[10px] text-muted-foreground">
+                        50% upfront, 50% on completion
+                      </p>
+                    </div>
+                  </div>
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-medium">Timeline</label>
+                    <div className="h-16 px-2 py-1.5 rounded-md border bg-background">
+                      <p className="text-[10px] text-muted-foreground">
+                        4 weeks from kickoff
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <Button className="w-full" size="sm">
+                  <FileText className="mr-2 h-3 w-3" />
+                  Draft my contract
+                </Button>
+              </div>
+            </div>
+          </ScrollArea>
+        </div>
+
+        {/* Right: Preview */}
+        <div className="w-1/2 flex flex-col bg-background/50">
+          <div className="border-b p-3 bg-background/80 backdrop-blur-sm flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <FileText className="h-4 w-4 text-primary" />
+              <h2 className="font-semibold text-sm">Generated Contract</h2>
+            </div>
+            <div className="flex gap-1.5">
+              <Button variant="outline" size="sm" className="h-7 px-2">
+                <Copy className="h-3 w-3" />
+              </Button>
+              <Button variant="default" size="sm" className="h-7 px-2 text-xs">
+                <Download className="mr-1.5 h-3 w-3" />
+                Export PDF
+              </Button>
+            </div>
+          </div>
+
+          <div className="flex-1 overflow-hidden">
+            <div className="flex border-b bg-muted/20 px-3">
+              <button className="px-3 py-2 text-xs font-medium border-b-2 border-primary">
+                Preview
+              </button>
+              <button className="px-3 py-2 text-xs font-medium text-muted-foreground hover:text-foreground">
+                Insights & Risks
+              </button>
+              <button className="px-3 py-2 text-xs font-medium text-muted-foreground hover:text-foreground">
+                Actions
+              </button>
+            </div>
+
+            <ScrollArea className="h-full">
+              <div className="p-4">
+                <div className="rounded-lg border bg-background p-4 font-mono text-[10px] leading-relaxed space-y-3">
+                  <h2 className="font-bold text-xs text-foreground">PROFESSIONAL SERVICES AGREEMENT</h2>
+                  <p className="text-muted-foreground">
+                    This Professional Services Agreement (the "Agreement") is entered into 
+                    as of November 30, 2024, by and between:
+                  </p>
+                  <p className="text-muted-foreground">
+                    <strong className="text-foreground">John Doe</strong> ("Client"), and
+                  </p>
+                  <p className="text-muted-foreground">
+                    <strong className="text-foreground">Jane Smith</strong> ("Provider").
+                  </p>
+                  <div className="pt-2">
+                    <h3 className="font-bold text-[11px] text-foreground">1. SERVICES</h3>
+                    <p className="text-muted-foreground mt-1">
+                      Provider agrees to provide web development services for a landing page 
+                      as described in Exhibit A. Services shall include up to two (2) rounds 
+                      of revisions.
+                    </p>
+                  </div>
+                  <div className="pt-2">
+                    <h3 className="font-bold text-[11px] text-foreground">2. COMPENSATION</h3>
+                    <p className="text-muted-foreground mt-1">
+                      Client shall pay Provider a total fee of $800. Payment terms: 50% ($400) 
+                      due upon execution of this Agreement, and 50% ($400) due upon completion 
+                      and acceptance of all deliverables.
+                    </p>
+                  </div>
+                  <div className="p-2 border-l-2 border-primary bg-primary/5 my-2">
+                    <div className="flex items-center gap-1 text-primary mb-0.5">
+                      <Sparkles className="h-2.5 w-2.5" />
+                      <span className="text-[9px] font-bold">AI Insight</span>
+                    </div>
+                    <p className="text-[9px] text-muted-foreground">
+                      This payment structure protects both parties - upfront deposit secures commitment, 
+                      final payment upon delivery ensures satisfaction.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </ScrollArea>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+

@@ -11,7 +11,7 @@ import {
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
-import { DashboardMockup, NegotiationMockupA, TemplatesMockup } from "@/components/landing/mockups";
+import { DashboardMockup, NegotiationMockupA, TemplatesMockup, StudioMockup } from "@/components/landing/mockups";
 
 const highlights = [
   { icon: <Zap />, label: "AI-Powered", value: "Real-time Analysis" },
@@ -94,19 +94,7 @@ export function LumiPactShowcase() {
             <Button
               asChild
               size="lg"
-              className="btn-glow btn-lux rounded-[14px] text-base px-8 py-6 group"
-            >
-              <Link href="https://lumipact.app" target="_blank">
-                <Zap className="h-5 w-5 mr-2" />
-                Launch LumiPact
-                <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </Button>
-            <Button
-              asChild
-              variant="outline"
-              size="lg"
-              className="rounded-[14px] text-base px-8 py-6"
+              className="btn-glow btn-lux rounded-[14px] text-base px-8 py-6"
             >
               <Link href="#contact">Join Beta Program</Link>
             </Button>
@@ -159,34 +147,40 @@ export function LumiPactShowcase() {
                    // The scrollProgress is for the tilt. We need a new state for the card index.
                    return prev; 
                 });
-                setActiveCard((prev) => (prev + 1) % 3);
+                setActiveCard((prev) => (prev + 1) % 4);
               }}
             >
               {[
-                { Component: TemplatesMockup, id: 2 },
-                { Component: NegotiationMockupA, id: 1 },
+                { Component: TemplatesMockup, id: 3 },
+                { Component: NegotiationMockupA, id: 2 },
+                { Component: StudioMockup, id: 1 },
                 { Component: DashboardMockup, id: 0 },
               ].map((item, index) => {
                 // Calculate position relative to active card
-                // We want 3 positions: 0 (Front), 1 (Middle), 2 (Back)
-                const position = (item.id - activeCard + 3) % 3;
+                // We want 4 positions: 0 (Front), 1 (Second), 2 (Third), 3 (Back)
+                const position = (item.id - activeCard + 4) % 4;
                 
                 // Styles for each position
                 const styles = {
                   0: { // Front
-                    zIndex: 30,
+                    zIndex: 40,
                     transform: 'translateY(0px) scale(1)',
                     opacity: 1,
                   },
-                  1: { // Middle
-                    zIndex: 20,
-                    transform: 'translateY(16px) scale(0.975)',
-                    opacity: 0.8,
+                  1: { // Second
+                    zIndex: 30,
+                    transform: 'translateY(12px) scale(0.98)',
+                    opacity: 0.9,
                   },
-                  2: { // Back
+                  2: { // Third
+                    zIndex: 20,
+                    transform: 'translateY(24px) scale(0.96)',
+                    opacity: 0.7,
+                  },
+                  3: { // Back
                     zIndex: 10,
-                    transform: 'translateY(32px) scale(0.95)',
-                    opacity: 0.6,
+                    transform: 'translateY(36px) scale(0.94)',
+                    opacity: 0.5,
                   },
                 };
 

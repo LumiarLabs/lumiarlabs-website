@@ -52,7 +52,7 @@ export function HeroSection() {
             className="btn-glow btn-lux rounded-[14px] relative group overflow-hidden"
           >
             <Link href="#lumipact">
-              Draft My Contract
+              Explore Features
             </Link>
           </Button>
           

@@ -244,7 +244,7 @@ export function LumiPactFeatures() {
             size="lg"
             className="btn-glow btn-lux rounded-[14px] text-base px-8 py-6"
           >
-            <Link href="https://lumipact.app" target="_blank">
+            <Link href="#contact">
               <Sparkles className="h-5 w-5 mr-2" />
               Get Started with LumiPact
             </Link>

@@ -13,8 +13,8 @@ import { Label } from "@/components/ui/label";
 import Waves from "@/components/ui/waves";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
-import { useFormState, useFormStatus } from "react-dom";
+import { useEffect, useState, useActionState } from "react";
+import { useFormStatus } from "react-dom";
 import { joinWaitlist } from "@/app/actions";
 import { useToast } from "@/hooks/use-toast";
 
@@ -34,7 +34,7 @@ export function ContactSection() {
   const [lineColor, setLineColor] = useState("rgba(255,255,255,0.16)");
   const { toast } = useToast();
   
-  const [state, formAction] = useFormState(joinWaitlist, {
+  const [state, formAction] = useActionState(joinWaitlist, {
     success: false,
     message: '',
     errors: {},

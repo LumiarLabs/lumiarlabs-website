@@ -80,7 +80,7 @@ export function Header() {
         {/* Right: CTA Button & Mobile Menu */}
         <div className="flex items-center gap-4 shrink-0">
           <Button asChild variant="default" size="sm" className="hidden md:inline-flex btn-glow btn-lux rounded-full px-6">
-            <Link href="https://lumipact.app" target="_blank" prefetch={false}>
+            <Link href="#contact" prefetch={false}>
               Launch LumiPact
             </Link>
           </Button>
@@ -110,7 +110,7 @@ export function Header() {
                   <div className="flex flex-col items-center gap-4 mt-4">
                     <ModeToggle />
                     <Button asChild variant="default" className="w-full max-w-xs rounded-full btn-glow btn-lux">
-                      <Link href="https://lumipact.app" target="_blank" prefetch={false}>
+                      <Link href="#contact" prefetch={false}>
                         Launch LumiPact
                       </Link>
                     </Button>
