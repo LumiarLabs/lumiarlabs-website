@@ -44,12 +44,12 @@ export function HeroSection() {
         </p>
         
         {/* Enhanced CTA Section with LumiPact Primary */}
-        <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4 opacity-0 animate-slide-up animation-delay-400">
+        <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4 opacity-0 animate-slide-up animation-delay-400 w-full sm:w-auto px-4 sm:px-0">
           {/* PRIMARY CTA - LumiPact */}
           <Button
             asChild
             size="lg"
-            className="btn-glow btn-lux rounded-[14px] relative group overflow-hidden"
+            className="btn-glow btn-lux rounded-[14px] relative group overflow-hidden w-full sm:w-auto"
           >
             <Link href="#lumipact">
               Explore Features
@@ -61,7 +61,7 @@ export function HeroSection() {
             asChild
             variant="outline"
             size="lg"
-            className="btn-glow btn-lux rounded-[14px]"
+            className="btn-glow btn-lux rounded-[14px] w-full sm:w-auto"
           >
             <Link href="#contact">Join the Waitlist</Link>
           </Button>

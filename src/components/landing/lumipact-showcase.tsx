@@ -90,11 +90,11 @@ export function LumiPactShowcase() {
           </p>
 
           {/* Primary CTA */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 w-full sm:w-auto px-4 sm:px-0">
             <Button
               asChild
               size="lg"
-              className="btn-glow btn-lux rounded-[14px] text-base px-8 py-6"
+              className="btn-glow btn-lux rounded-[14px] text-base px-8 py-6 w-full sm:w-auto"
             >
               <Link href="#contact">Join Beta Program</Link>
             </Button>
@@ -141,7 +141,7 @@ export function LumiPactShowcase() {
             <div 
               className="relative w-full h-full cursor-pointer group"
               onClick={() => {
-                // Cycle cards: 0 -> 1 -> 2 -> 0
+                // Cycle cards: 0 -> 1 -> 2 -> 3 -> 0
                 setScrollProgress((prev) => {
                    // We are reusing this state or should we create a new one? 
                    // The scrollProgress is for the tilt. We need a new state for the card index.

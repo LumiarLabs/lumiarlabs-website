@@ -169,62 +169,63 @@ export function NegotiationMockupA() {
   return (
     <div className="w-full h-full bg-background rounded-xl overflow-hidden flex flex-col">
       {/* Header */}
-      <div className="h-16 border-b flex items-center justify-between px-6 bg-muted/10">
-        <div className="flex items-center gap-4">
-          <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center">
-            <Split className="h-5 w-5 text-primary" />
+      <div className="h-12 sm:h-14 md:h-16 border-b flex items-center justify-between px-2 sm:px-4 md:px-6 bg-muted/10">
+        <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
+          <div className="h-7 w-7 sm:h-8 sm:w-8 md:h-10 md:w-10 rounded-lg bg-primary/10 flex items-center justify-center">
+            <Split className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5 text-primary" />
           </div>
           <div>
-            <h2 className="font-semibold">MSA Negotiation - Round 2</h2>
-            <div className="flex items-center gap-2 text-xs text-muted-foreground">
-              <span>vs. Counterparty V2</span>
-              <Badge variant="outline" className="h-5 px-1.5 text-[10px]">In Review</Badge>
+            <h2 className="font-semibold text-[10px] sm:text-xs md:text-sm">MSA Negotiation - Round 2</h2>
+            <div className="flex items-center gap-1 sm:gap-2 text-[8px] sm:text-[9px] md:text-xs text-muted-foreground">
+              <span className="hidden sm:inline">vs. Counterparty V2</span>
+              <Badge variant="outline" className="h-3.5 sm:h-4 md:h-5 px-1 sm:px-1.5 text-[7px] sm:text-[8px] md:text-[10px]">In Review</Badge>
             </div>
           </div>
         </div>
-        <div className="flex items-center gap-3">
-          <Button variant="outline" size="sm">
-            <Eye className="mr-2 h-4 w-4" />
-            Preview PDF
+        <div className="flex items-center gap-1 sm:gap-2 md:gap-3">
+          <Button variant="outline" size="sm" className="h-6 sm:h-7 md:h-8 px-2 sm:px-3 text-[8px] sm:text-[9px] md:text-[10px] hidden md:flex">
+            <Eye className="mr-1 sm:mr-2 h-2.5 sm:h-3 md:h-4 w-2.5 sm:w-3 md:w-4" />
+            <span className="hidden lg:inline">Preview PDF</span>
           </Button>
-          <Button size="sm">
-            Submit Review
+          <Button size="sm" className="h-6 sm:h-7 md:h-8 px-2 sm:px-3 text-[8px] sm:text-[9px] md:text-[10px]">
+            <span className="hidden sm:inline">Submit Review</span>
+            <span className="sm:hidden">Submit</span>
           </Button>
         </div>
       </div>
-      <div className="flex flex-1 overflow-hidden">
+      <div className="flex flex-col lg:flex-row flex-1 overflow-hidden">
         {/* Left Panel: Change List & Risks */}
-        <div className="w-80 border-r bg-muted/5 flex flex-col">
-          <div className="p-4 border-b">
-            <h3 className="font-semibold text-sm mb-1">Detected Changes</h3>
-            <p className="text-xs text-muted-foreground">3 modifications requiring review</p>
+        <div className="w-full lg:w-48 xl:w-60 2xl:w-80 border-b lg:border-b-0 lg:border-r bg-muted/5 flex flex-col">
+          <div className="p-2 sm:p-3 md:p-4 border-b">
+            <h3 className="font-semibold text-[10px] sm:text-xs md:text-sm mb-0.5 sm:mb-1">Detected Changes</h3>
+            <p className="text-[8px] sm:text-[9px] md:text-xs text-muted-foreground">3 modifications requiring review</p>
           </div>
-          <ScrollArea className="flex-1 p-4">
-            <div className="space-y-3">
-              <div className="p-3 rounded-lg border bg-background shadow-sm border-l-4 border-l-red-500 cursor-pointer ring-1 ring-primary/20">
-                <div className="flex items-center justify-between mb-1">
-                  <span className="font-medium text-sm">2.1 Payment Terms</span>
-                  <AlertTriangle className="h-3 w-3 text-red-500" />
+          <ScrollArea className="flex-1 p-2 sm:p-3 md:p-4">
+            <div className="space-y-2 sm:space-y-2.5 md:space-y-3">
+              <div className="p-2 sm:p-2.5 md:p-3 rounded-lg border bg-background shadow-sm border-l-2 sm:border-l-3 md:border-l-4 border-l-red-500 cursor-pointer ring-1 ring-primary/20">
+                <div className="flex items-center justify-between mb-0.5 sm:mb-1">
+                  <span className="font-medium text-[9px] sm:text-[10px] md:text-sm">2.1 Payment Terms</span>
+                  <AlertTriangle className="h-2 sm:h-2.5 md:h-3 w-2 sm:w-2.5 md:w-3 text-red-500" />
                 </div>
-                <p className="text-xs text-muted-foreground line-clamp-2">
+                <p className="text-[7px] sm:text-[8px] md:text-xs text-muted-foreground line-clamp-2">
                   Changed payment window from 30 to 60 days.
                 </p>
               </div>
-              <div className="p-3 rounded-lg border bg-background/50 hover:bg-background transition-colors cursor-pointer border-l-4 border-l-yellow-500">
-                <div className="flex items-center justify-between mb-1">
-                  <span className="font-medium text-sm">4.3 Indemnity</span>
-                  <AlertTriangle className="h-3 w-3 text-yellow-500" />
+              <div className="p-2 sm:p-2.5 md:p-3 rounded-lg border bg-background/50 hover:bg-background transition-colors cursor-pointer border-l-2 sm:border-l-3 md:border-l-4 border-l-yellow-500">
+                <div className="flex items-center justify-between mb-0.5 sm:mb-1">
+                  <span className="font-medium text-[9px] sm:text-[10px] md:text-sm">4.3 Indemnity</span>
+                  <AlertTriangle className="h-2 sm:h-2.5 md:h-3 w-2 sm:w-2.5 md:w-3 text-yellow-500" />
                 </div>
-                <p className="text-xs text-muted-foreground line-clamp-2">
+                <p className="text-[7px] sm:text-[8px] md:text-xs text-muted-foreground line-clamp-2">
                   Added mutual indemnification clause.
                 </p>
               </div>
-              <div className="p-3 rounded-lg border bg-background/50 hover:bg-background transition-colors cursor-pointer border-l-4 border-l-green-500">
-                <div className="flex items-center justify-between mb-1">
-                  <span className="font-medium text-sm">8.1 Termination</span>
-                  <CheckCircle2 className="h-3 w-3 text-green-500" />
+              <div className="p-2 sm:p-2.5 md:p-3 rounded-lg border bg-background/50 hover:bg-background transition-colors cursor-pointer border-l-2 sm:border-l-3 md:border-l-4 border-l-green-500 hidden sm:block">
+                <div className="flex items-center justify-between mb-0.5 sm:mb-1">
+                  <span className="font-medium text-[9px] sm:text-[10px] md:text-sm">8.1 Termination</span>
+                  <CheckCircle2 className="h-2 sm:h-2.5 md:h-3 w-2 sm:w-2.5 md:w-3 text-green-500" />
                 </div>
-                <p className="text-xs text-muted-foreground line-clamp-2">
+                <p className="text-[7px] sm:text-[8px] md:text-xs text-muted-foreground line-clamp-2">
                   Accepted our proposed termination notice period.
                 </p>
               </div>
@@ -234,69 +235,69 @@ export function NegotiationMockupA() {
         {/* Main Panel: Split View Comparison */}
         <div className="flex-1 flex flex-col bg-background">
           {/* Comparison Header */}
-          <div className="h-10 border-b flex items-center px-4 bg-muted/20 text-xs font-medium text-muted-foreground">
-            <div className="flex-1 pl-4">Original (v1)</div>
-            <div className="w-8 flex justify-center"><ArrowRight className="h-3 w-3" /></div>
-            <div className="flex-1 pl-4">Counterparty (v2)</div>
+          <div className="h-8 sm:h-9 md:h-10 border-b flex items-center px-2 sm:px-3 md:px-4 bg-muted/20 text-[8px] sm:text-[9px] md:text-xs font-medium text-muted-foreground">
+            <div className="flex-1 pl-2 sm:pl-3 md:pl-4">Original (v1)</div>
+            <div className="w-6 sm:w-7 md:w-8 flex justify-center"><ArrowRight className="h-2 sm:h-2.5 md:h-3 w-2 sm:w-2.5 md:w-3" /></div>
+            <div className="flex-1 pl-2 sm:pl-3 md:pl-4">Counterparty (v2)</div>
           </div>
           {/* Comparison Content */}
-          <div className="flex-1 p-6 overflow-y-auto">
-            <div className="space-y-8">
+          <div className="flex-1 p-2 sm:p-3 md:p-4 lg:p-6 overflow-y-auto">
+            <div className="space-y-4 sm:space-y-6 md:space-y-8">
               {/* Clause 2.1 */}
-              <div className="space-y-3">
+              <div className="space-y-2 sm:space-y-2.5 md:space-y-3">
                 <div className="flex items-center justify-between">
-                  <h3 className="font-semibold text-sm">2.1 Payment Terms</h3>
-                  <div className="flex gap-2">
-                    <Button size="sm" variant="outline" className="h-7 text-xs text-red-600 hover:text-red-700 hover:bg-red-50 border-red-200">
-                      <XCircle className="mr-1.5 h-3 w-3" /> Reject
+                  <h3 className="font-semibold text-[10px] sm:text-xs md:text-sm">2.1 Payment Terms</h3>
+                  <div className="flex gap-1 sm:gap-1.5 md:gap-2">
+                    <Button size="sm" variant="outline" className="h-5 sm:h-6 md:h-7 px-1.5 sm:px-2 text-[8px] sm:text-[9px] md:text-xs text-red-600 hover:text-red-700 hover:bg-red-50 border-red-200">
+                      <XCircle className="mr-0.5 sm:mr-1 md:mr-1.5 h-2 sm:h-2.5 md:h-3 w-2 sm:w-2.5 md:w-3" /> <span className="hidden sm:inline">Reject</span>
                     </Button>
-                    <Button size="sm" className="h-7 text-xs bg-green-600 hover:bg-green-700">
-                      <CheckCircle2 className="mr-1.5 h-3 w-3" /> Accept
+                    <Button size="sm" className="h-5 sm:h-6 md:h-7 px-1.5 sm:px-2 text-[8px] sm:text-[9px] md:text-xs bg-green-600 hover:bg-green-700">
+                      <CheckCircle2 className="mr-0.5 sm:mr-1 md:mr-1.5 h-2 sm:h-2.5 md:h-3 w-2 sm:w-2.5 md:w-3" /> <span className="hidden sm:inline">Accept</span>
                     </Button>
                   </div>
                 </div>
 
-                <div className="grid grid-cols-[1fr_auto_1fr] gap-4 items-start">
-                  <div className="p-4 rounded-lg bg-muted/30 border text-sm text-muted-foreground">
-                    Payment shall be made within <span className="bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 font-medium px-1 rounded">thirty (30)</span> days of the invoice date.
+                <div className="grid grid-cols-[1fr_auto_1fr] gap-2 sm:gap-3 md:gap-4 items-start">
+                  <div className="p-2 sm:p-3 md:p-4 rounded-lg bg-muted/30 border text-[8px] sm:text-[9px] md:text-sm text-muted-foreground">
+                    Payment shall be made within <span className="bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 font-medium px-0.5 sm:px-1 rounded">thirty (30)</span> days of the invoice date.
                   </div>
-                  <div className="pt-4 text-muted-foreground">
-                    <ArrowRight className="h-4 w-4" />
+                  <div className="pt-2 sm:pt-3 md:pt-4 text-muted-foreground">
+                    <ArrowRight className="h-2.5 sm:h-3 md:h-4 w-2.5 sm:w-3 md:w-4" />
                   </div>
-                  <div className="p-4 rounded-lg bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/30 text-sm">
-                    Payment shall be made within <span className="bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 font-medium px-1 rounded">sixty (60)</span> days of the invoice date.
+                  <div className="p-2 sm:p-3 md:p-4 rounded-lg bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/30 text-[8px] sm:text-[9px] md:text-sm">
+                    Payment shall be made within <span className="bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 font-medium px-0.5 sm:px-1 rounded">sixty (60)</span> days of the invoice date.
                   </div>
                 </div>
-                <div className="p-3 rounded-md bg-yellow-50 dark:bg-yellow-900/10 border border-yellow-100 dark:border-yellow-900/30 flex gap-3">
-                  <AlertTriangle className="h-4 w-4 text-yellow-600 shrink-0 mt-0.5" />
-                  <div className="space-y-1">
-                    <p className="text-xs font-medium text-yellow-800 dark:text-yellow-500">Risk Alert: Cash Flow Impact</p>
-                    <p className="text-xs text-yellow-700 dark:text-yellow-400/80">
+                <div className="p-2 sm:p-2.5 md:p-3 rounded-md bg-yellow-50 dark:bg-yellow-900/10 border border-yellow-100 dark:border-yellow-900/30 flex gap-2 sm:gap-2.5 md:gap-3">
+                  <AlertTriangle className="h-3 sm:h-3.5 md:h-4 w-3 sm:w-3.5 md:w-4 text-yellow-600 shrink-0 mt-0.5" />
+                  <div className="space-y-0.5 sm:space-y-1">
+                    <p className="text-[8px] sm:text-[9px] md:text-xs font-medium text-yellow-800 dark:text-yellow-500">Risk Alert: Cash Flow Impact</p>
+                    <p className="text-[7px] sm:text-[8px] md:text-xs text-yellow-700 dark:text-yellow-400/80 line-clamp-2 sm:line-clamp-3">
                       Extending payment terms to 60 days significantly exceeds your standard 30-day policy. Consider countering with 45 days.
                     </p>
-                    <div className="pt-1">
-                      <Button variant="link" className="h-auto p-0 text-xs text-yellow-800 underline decoration-yellow-800/30">
+                    <div className="pt-0.5 sm:pt-1 hidden md:block">
+                      <Button variant="link" className="h-auto p-0 text-[8px] sm:text-[9px] md:text-xs text-yellow-800 underline decoration-yellow-800/30">
                         Use AI Counter-Proposal
                       </Button>
                     </div>
                   </div>
                 </div>
               </div>
-              <Separator />
+              <Separator className="hidden sm:block" />
               {/* Clause 4.3 */}
-              <div className="space-y-3 opacity-60 hover:opacity-100 transition-opacity">
+              <div className="space-y-2 sm:space-y-2.5 md:space-y-3 opacity-60 hover:opacity-100 transition-opacity hidden md:block">
                 <div className="flex items-center justify-between">
-                  <h3 className="font-semibold text-sm">4.3 Indemnification</h3>
-                  <Badge variant="secondary" className="text-xs">Pending</Badge>
+                  <h3 className="font-semibold text-[10px] sm:text-xs md:text-sm">4.3 Indemnification</h3>
+                  <Badge variant="secondary" className="text-[8px] sm:text-[9px] md:text-xs">Pending</Badge>
                 </div>
-                <div className="grid grid-cols-[1fr_auto_1fr] gap-4 items-start">
-                  <div className="p-4 rounded-lg bg-muted/30 border text-sm text-muted-foreground">
+                <div className="grid grid-cols-[1fr_auto_1fr] gap-2 sm:gap-3 md:gap-4 items-start">
+                  <div className="p-2 sm:p-3 md:p-4 rounded-lg bg-muted/30 border text-[8px] sm:text-[9px] md:text-sm text-muted-foreground">
                     [Clause Missing]
                   </div>
-                  <div className="pt-4 text-muted-foreground">
-                    <ArrowRight className="h-4 w-4" />
+                  <div className="pt-2 sm:pt-3 md:pt-4 text-muted-foreground">
+                    <ArrowRight className="h-2.5 sm:h-3 md:h-4 w-2.5 sm:w-3 md:w-4" />
                   </div>
-                  <div className="p-4 rounded-lg bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/30 text-sm">
+                  <div className="p-2 sm:p-3 md:p-4 rounded-lg bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/30 text-[8px] sm:text-[9px] md:text-sm">
                     Each party shall indemnify, defend, and hold harmless the other party...
                   </div>
                 </div>
@@ -395,59 +396,59 @@ export function TemplatesMockup() {
 
 export function StudioMockup() {
   return (
-    <div className="w-full h-full bg-background rounded-xl overflow-hidden flex">
+    <div className="w-full h-full bg-background rounded-xl overflow-hidden flex flex-col">
       {/* Main Content: Split View */}
-      <div className="flex-1 flex overflow-hidden">
+      <div className="flex-1 flex flex-col md:flex-row overflow-hidden">
         {/* Left: Input Form */}
-        <div className="w-1/2 border-r overflow-hidden">
+        <div className="w-full md:w-1/2 border-b md:border-b-0 md:border-r overflow-hidden">
           <ScrollArea className="h-full">
-            <div className="p-4 space-y-4">
-              <div className="space-y-1.5">
-                <h1 className="text-lg font-bold">Describe your deal</h1>
-                <p className="text-xs text-muted-foreground">
+            <div className="p-2 sm:p-3 md:p-4 space-y-2 sm:space-y-3 md:space-y-4">
+              <div className="space-y-1">
+                <h1 className="text-xs sm:text-sm md:text-base lg:text-lg font-bold">Describe your deal</h1>
+                <p className="text-[9px] sm:text-[10px] md:text-xs text-muted-foreground hidden sm:block">
                   Feed LumiPact a plain-language scenario or pick a template.
                 </p>
               </div>
 
-              <div className="space-y-3">
-                <div className="space-y-1.5">
-                  <label className="text-xs font-medium">Parties Involved</label>
-                  <div className="h-8 px-3 rounded-md border bg-background flex items-center">
-                    <span className="text-xs text-muted-foreground">John Doe (Client), Jane Smith (Provider)</span>
+              <div className="space-y-2 sm:space-y-2.5 md:space-y-3">
+                <div className="space-y-0.5 sm:space-y-1">
+                  <label className="text-[9px] sm:text-[10px] md:text-xs font-medium">Parties Involved</label>
+                  <div className="h-6 sm:h-7 md:h-8 px-2 sm:px-2.5 md:px-3 rounded-md border bg-background flex items-center">
+                    <span className="text-[8px] sm:text-[9px] md:text-[10px] lg:text-xs text-muted-foreground truncate">John Doe (Client), Jane Smith (Provider)</span>
                   </div>
                 </div>
 
-                <div className="space-y-1.5">
-                  <label className="text-xs font-medium">Describe Contract</label>
-                  <div className="h-20 px-3 py-2 rounded-md border bg-background">
-                    <p className="text-xs text-muted-foreground leading-relaxed">
+                <div className="space-y-0.5 sm:space-y-1">
+                  <label className="text-[9px] sm:text-[10px] md:text-xs font-medium">Describe Contract</label>
+                  <div className="h-14 sm:h-16 md:h-20 px-2 sm:px-2.5 md:px-3 py-1 sm:py-1.5 md:py-2 rounded-md border bg-background">
+                    <p className="text-[8px] sm:text-[9px] md:text-[10px] lg:text-xs text-muted-foreground leading-relaxed line-clamp-3 sm:line-clamp-4">
                       Web development services for a landing page with two rounds of revisions, 
                       delivered by January 15th for $800.
                     </p>
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-3">
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-medium">Payment Terms</label>
-                    <div className="h-16 px-2 py-1.5 rounded-md border bg-background">
-                      <p className="text-[10px] text-muted-foreground">
+                <div className="grid grid-cols-2 gap-1.5 sm:gap-2 md:gap-3">
+                  <div className="space-y-0.5 sm:space-y-1">
+                    <label className="text-[9px] sm:text-[10px] md:text-xs font-medium">Payment Terms</label>
+                    <div className="h-10 sm:h-12 md:h-16 px-1.5 sm:px-2 py-1 sm:py-1.5 rounded-md border bg-background">
+                      <p className="text-[7px] sm:text-[8px] md:text-[9px] lg:text-[10px] text-muted-foreground">
                         50% upfront, 50% on completion
                       </p>
                     </div>
                   </div>
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-medium">Timeline</label>
-                    <div className="h-16 px-2 py-1.5 rounded-md border bg-background">
-                      <p className="text-[10px] text-muted-foreground">
+                  <div className="space-y-0.5 sm:space-y-1">
+                    <label className="text-[9px] sm:text-[10px] md:text-xs font-medium">Timeline</label>
+                    <div className="h-10 sm:h-12 md:h-16 px-1.5 sm:px-2 py-1 sm:py-1.5 rounded-md border bg-background">
+                      <p className="text-[7px] sm:text-[8px] md:text-[9px] lg:text-[10px] text-muted-foreground">
                         4 weeks from kickoff
                       </p>
                     </div>
                   </div>
                 </div>
 
-                <Button className="w-full" size="sm">
-                  <FileText className="mr-2 h-3 w-3" />
+                <Button className="w-full h-6 sm:h-7 md:h-8 text-[9px] sm:text-[10px] md:text-xs" size="sm">
+                  <FileText className="mr-1 sm:mr-1.5 md:mr-2 h-2.5 sm:h-3 w-2.5 sm:w-3" />
                   Draft my contract
                 </Button>
               </div>
@@ -456,72 +457,72 @@ export function StudioMockup() {
         </div>
 
         {/* Right: Preview */}
-        <div className="w-1/2 flex flex-col bg-background/50">
-          <div className="border-b p-3 bg-background/80 backdrop-blur-sm flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <FileText className="h-4 w-4 text-primary" />
-              <h2 className="font-semibold text-sm">Generated Contract</h2>
+        <div className="w-full md:w-1/2 flex flex-col bg-background/50">
+          <div className="border-b p-2 sm:p-2.5 md:p-3 bg-background/80 backdrop-blur-sm flex items-center justify-between">
+            <div className="flex items-center gap-1.5 sm:gap-2">
+              <FileText className="h-3 sm:h-3.5 md:h-4 w-3 sm:w-3.5 md:w-4 text-primary" />
+              <h2 className="font-semibold text-[10px] sm:text-xs md:text-sm">Generated Contract</h2>
             </div>
-            <div className="flex gap-1.5">
-              <Button variant="outline" size="sm" className="h-7 px-2">
-                <Copy className="h-3 w-3" />
+            <div className="flex gap-1 sm:gap-1.5">
+              <Button variant="outline" size="sm" className="h-5 sm:h-6 md:h-7 px-1 sm:px-1.5 md:px-2">
+                <Copy className="h-2 sm:h-2.5 md:h-3 w-2 sm:w-2.5 md:w-3" />
               </Button>
-              <Button variant="default" size="sm" className="h-7 px-2 text-xs">
-                <Download className="mr-1.5 h-3 w-3" />
-                Export PDF
+              <Button variant="default" size="sm" className="h-5 sm:h-6 md:h-7 px-1.5 sm:px-2 text-[8px] sm:text-[9px] md:text-xs hidden sm:flex items-center">
+                <Download className="mr-1 sm:mr-1.5 h-2 sm:h-2.5 md:h-3 w-2 sm:w-2.5 md:w-3" />
+                <span className="hidden md:inline">Export PDF</span>
               </Button>
             </div>
           </div>
 
           <div className="flex-1 overflow-hidden">
-            <div className="flex border-b bg-muted/20 px-3">
-              <button className="px-3 py-2 text-xs font-medium border-b-2 border-primary">
+            <div className="flex border-b bg-muted/20 px-2 sm:px-3">
+              <button className="px-2 sm:px-3 py-1.5 sm:py-2 text-[9px] sm:text-[10px] md:text-xs font-medium border-b-2 border-primary">
                 Preview
               </button>
-              <button className="px-3 py-2 text-xs font-medium text-muted-foreground hover:text-foreground">
+              <button className="px-2 sm:px-3 py-1.5 sm:py-2 text-[9px] sm:text-[10px] md:text-xs font-medium text-muted-foreground hover:text-foreground hidden md:block">
                 Insights & Risks
               </button>
-              <button className="px-3 py-2 text-xs font-medium text-muted-foreground hover:text-foreground">
+              <button className="px-2 sm:px-3 py-1.5 sm:py-2 text-[9px] sm:text-[10px] md:text-xs font-medium text-muted-foreground hover:text-foreground hidden lg:block">
                 Actions
               </button>
             </div>
 
             <ScrollArea className="h-full">
-              <div className="p-4">
-                <div className="rounded-lg border bg-background p-4 font-mono text-[10px] leading-relaxed space-y-3">
-                  <h2 className="font-bold text-xs text-foreground">PROFESSIONAL SERVICES AGREEMENT</h2>
-                  <p className="text-muted-foreground">
+              <div className="p-2 sm:p-3 md:p-4">
+                <div className="rounded-lg border bg-background p-2 sm:p-3 md:p-4 font-mono text-[7px] sm:text-[8px] md:text-[9px] lg:text-[10px] leading-relaxed space-y-1.5 sm:space-y-2 md:space-y-3">
+                  <h2 className="font-bold text-[8px] sm:text-[9px] md:text-[10px] lg:text-xs text-foreground">PROFESSIONAL SERVICES AGREEMENT</h2>
+                  <p className="text-muted-foreground hidden sm:block">
                     This Professional Services Agreement (the "Agreement") is entered into 
                     as of November 30, 2024, by and between:
                   </p>
                   <p className="text-muted-foreground">
                     <strong className="text-foreground">John Doe</strong> ("Client"), and
                   </p>
-                  <p className="text-muted-foreground">
+                  <p className="text-muted-foreground hidden md:block">
                     <strong className="text-foreground">Jane Smith</strong> ("Provider").
                   </p>
-                  <div className="pt-2">
-                    <h3 className="font-bold text-[11px] text-foreground">1. SERVICES</h3>
-                    <p className="text-muted-foreground mt-1">
+                  <div className="pt-1 sm:pt-1.5 md:pt-2">
+                    <h3 className="font-bold text-[8px] sm:text-[9px] md:text-[10px] lg:text-[11px] text-foreground">1. SERVICES</h3>
+                    <p className="text-muted-foreground mt-0.5 sm:mt-1 line-clamp-2 sm:line-clamp-3">
                       Provider agrees to provide web development services for a landing page 
                       as described in Exhibit A. Services shall include up to two (2) rounds 
                       of revisions.
                     </p>
                   </div>
-                  <div className="pt-2">
-                    <h3 className="font-bold text-[11px] text-foreground">2. COMPENSATION</h3>
-                    <p className="text-muted-foreground mt-1">
+                  <div className="pt-1 sm:pt-1.5 md:pt-2 hidden sm:block">
+                    <h3 className="font-bold text-[8px] sm:text-[9px] md:text-[10px] lg:text-[11px] text-foreground">2. COMPENSATION</h3>
+                    <p className="text-muted-foreground mt-0.5 sm:mt-1 line-clamp-2 md:line-clamp-3">
                       Client shall pay Provider a total fee of $800. Payment terms: 50% ($400) 
                       due upon execution of this Agreement, and 50% ($400) due upon completion 
                       and acceptance of all deliverables.
                     </p>
                   </div>
-                  <div className="p-2 border-l-2 border-primary bg-primary/5 my-2">
-                    <div className="flex items-center gap-1 text-primary mb-0.5">
-                      <Sparkles className="h-2.5 w-2.5" />
-                      <span className="text-[9px] font-bold">AI Insight</span>
+                  <div className="p-1.5 sm:p-2 border-l-2 border-primary bg-primary/5 my-1 sm:my-1.5 md:my-2">
+                    <div className="flex items-center gap-0.5 sm:gap-1 text-primary mb-0.5">
+                      <Sparkles className="h-1.5 sm:h-2 md:h-2.5 w-1.5 sm:w-2 md:w-2.5" />
+                      <span className="text-[7px] sm:text-[8px] md:text-[9px] font-bold">AI Insight</span>
                     </div>
-                    <p className="text-[9px] text-muted-foreground">
+                    <p className="text-[7px] sm:text-[8px] md:text-[9px] text-muted-foreground line-clamp-2">
                       This payment structure protects both parties - upfront deposit secures commitment, 
                       final payment upon delivery ensures satisfaction.
                     </p>
@@ -535,4 +536,5 @@ export function StudioMockup() {
     </div>
   );
 }
+
 
