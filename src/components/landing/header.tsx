@@ -22,6 +22,7 @@ const LumiarLabsIcon = () => (
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,6 +30,30 @@ export function Header() {
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      {
+        rootMargin: "-20% 0px -50% 0px", // Trigger when section is near center/top
+        threshold: 0.1,
+      }
+    );
+
+    const sections = ["home", "lumipact", "team", "contact"];
+    sections.forEach((id) => {
+      const element = document.getElementById(id);
+      if (element) observer.observe(element);
+    });
+
+    return () => observer.disconnect();
   }, []);
 
   const navLinks = [
@@ -59,31 +84,38 @@ export function Header() {
         {/* Center: Navigation & Theme Toggle */}
         <div className="hidden md:flex items-center gap-6 absolute left-1/2 -translate-x-1/2">
           <nav className="flex items-center gap-6">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary relative"
-                prefetch={false}
-              >
-                {link.label}
-                {link.badge && (
-                  <span className="absolute -top-0.5 -right-1.5 w-2 h-2 rounded-full bg-red-500 animate-pulse" />
-                )}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = activeSection === link.href.substring(1);
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`text-sm font-medium transition-colors relative py-1 ${
+                    isActive 
+                      ? "text-foreground" 
+                      : "text-muted-foreground hover:text-primary"
+                  }`}
+                  prefetch={false}
+                >
+                  {link.label}
+                  {link.badge && (
+                    <span className="absolute -top-0.5 -right-1.5 w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+                  )}
+                  {/* Active Indicator - Purple Underline */}
+                  {isActive && (
+                    <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-purple-400 rounded-full animate-in fade-in zoom-in duration-300" />
+                  )}
+                </Link>
+              );
+            })}
           </nav>
-          <div className="w-px h-4 bg-border/50" />
-          <ModeToggle />
         </div>
 
-        {/* Right: CTA Button & Mobile Menu */}
+        {/* Right: Theme Toggle & Mobile Menu */}
         <div className="flex items-center gap-4 shrink-0">
-          <Button asChild variant="default" size="sm" className="hidden md:inline-flex btn-glow btn-lux rounded-full px-6">
-            <Link href="#contact" prefetch={false}>
-              Launch LumiPact
-            </Link>
-          </Button>
+          <div className="hidden md:flex">
+            <ModeToggle />
+          </div>
 
           <div className="md:hidden">
             <Sheet>
@@ -109,11 +141,6 @@ export function Header() {
                   </nav>
                   <div className="flex flex-col items-center gap-4 mt-4">
                     <ModeToggle />
-                    <Button asChild variant="default" className="w-full max-w-xs rounded-full btn-glow btn-lux">
-                      <Link href="#contact" prefetch={false}>
-                        Launch LumiPact
-                      </Link>
-                    </Button>
                   </div>
                 </div>
               </SheetContent>

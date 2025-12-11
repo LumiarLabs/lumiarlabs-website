@@ -590,3 +590,16 @@ body {
   transform: translateY(0);
   filter: blur(0px);
 }
+
+/* Hide default cursor on devices that support hover (desktop) */
+@media (hover: hover) and (pointer: fine) {
+  body {}
+
+  /* Ensure typical interactive elements also hide the cursor */
+  a,
+  button,
+  [role="button"],
+  input,
+  textarea,
+  select {}
+}

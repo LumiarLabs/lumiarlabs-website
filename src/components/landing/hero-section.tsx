@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { LogoCarousel } from "./logo-carousel";
 import Waves from "@/components/ui/waves";
-import { Zap, ArrowRight } from "lucide-react";
+import { Zap, ArrowRight, ArrowUpRight } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
@@ -17,7 +17,7 @@ export function HeroSection() {
   }, [resolvedTheme]);
 
   return (
-    <section className="relative isolate w-full h-screen flex items-center justify-center overflow-hidden">
+    <section id="home" className="relative isolate w-full h-screen flex items-center justify-center overflow-hidden">
       <Waves
         className="pointer-events-none absolute inset-0 -z-10"
         lineColor={lineColor}
@@ -44,27 +44,28 @@ export function HeroSection() {
         </p>
         
         {/* Enhanced CTA Section with LumiPact Primary */}
-        <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4 opacity-0 animate-slide-up animation-delay-400 w-full sm:w-auto px-4 sm:px-0">
-          {/* PRIMARY CTA - LumiPact */}
+        <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-6 opacity-0 animate-slide-up animation-delay-400 w-full sm:w-auto px-4 sm:px-0">
+          {/* PRIMARY CTA - Join Waitlist (Left) */}
           <Button
             asChild
             size="lg"
-            className="btn-glow btn-lux rounded-[14px] relative group overflow-hidden w-full sm:w-auto"
-          >
-            <Link href="#lumipact">
-              Explore Features
-            </Link>
-          </Button>
-          
-          {/* SECONDARY CTAs */}
-          <Button
-            asChild
             variant="outline"
-            size="lg"
-            className="btn-glow btn-lux rounded-[14px] w-full sm:w-auto"
+            className="btn-glow btn-lux rounded-[14px] w-full sm:w-auto font-semibold"
           >
             <Link href="#contact">Join the Waitlist</Link>
           </Button>
+          
+          {/* SECONDARY CTA - Explore Features (Right, Text Link) */}
+          <Link 
+            href="#lumipact"
+            className="group flex items-center gap-1.5 text-purple-400 hover:text-purple-300 transition-colors font-medium shadow-purple-400/20 drop-shadow-sm"
+          >
+            <span className="relative">
+              Explore Features
+              <span className="absolute -bottom-1 left-0 right-0 h-[2px] bg-purple-400 rounded-full" />
+            </span>
+            <ArrowUpRight className="w-4 h-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+          </Link>
         </div>
         {/* Scroll hint */}
         <div className="mt-16 flex items-center justify-center gap-4 text-muted-foreground opacity-0 animate-fade-in animation-delay-500">
